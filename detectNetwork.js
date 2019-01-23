@@ -15,16 +15,28 @@ var detectNetwork = function(cardNumber) {
   // Once you've read this, go ahead and try to implement this function, then return to the console.
   var length = cardNumber.length;
 
-  var prefix1 = cardNumber.slice(0, 2);
-  var prefix2 = cardNumber.slice(0, 1);
+  var prefix1 = cardNumber.slice(0, 1);
+  var prefix2 = cardNumber.slice(0, 2);
+  var prefix3 = cardNumber.slice(0, 4);
+  var prefix4 = cardNumber.slice(0, 5);
 
-  if (length === 14 && (prefix1 === '38' || '39')) {
+  if ((prefix2 === '38' || '39') && length === 14 ) {
     return "Diner's Club";
-  } else if (length === 15 && (prefix1 === '34' || '37')) {
+  } else if ((prefix2 === '34' || '37') && length === 15) {
   	return "American Express";
-  } else if((length === 13 || 16 || 19) && prefix2 === '4'){
+  } else if(prefix1 === '4' && (length === 13 || 16 || 19)){
     return "Visa";
-  } else if(length === 16 && (prefix1 === '51' || '52' || '53' || '54' || '55')) {
+  } else if((parseInt(prefix2) >= 51 && parseInt(prefix2) <= 55) && length === 16) {
     return "MasterCard";
+  } else if ((prefix4 === '6011' || (parseInt(prefix3) >= 644 && parseInt(prefix3) <= 649) || prefix2 === '65') && length === 16 || 19 ) {
+    return "Discover";
   }
+
+
+
+
+
+
+
+
 };
