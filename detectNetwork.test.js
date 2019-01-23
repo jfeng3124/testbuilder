@@ -84,7 +84,7 @@ describe('Visa', function() {
   // Chai provides an assert that acts the same as our previous assert.
   // Search the documentation to figure out how to access it.
   //   http://chaijs.com/
-  var assert = chai.FILL_ME_IN;
+  var assert = chai.assert;
 
 
   it('has a prefix of 4 and a length of 13', function() {
@@ -142,13 +142,38 @@ describe('MasterCard', function() {
 describe('Discover', function() {
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
-  it('has a prefix of 6011 and a length of 16');
-  it('has a prefix of 6011 and a length of 19');
-});
+  var assert = chai.assert;
+  var expect = chai.expect;
+  it('has a prefix of 6011 and a length of 16', function() {
+    assert(detectNetwork('6011451205869432' === "Discover"))
+  });
+  it('has a prefix of 6011 and a length of 19', function() {
+    assert(detectNetwork('6011459601294586719' === "Discover"))
+  });
+
+  for (let prefix = 644; prefix <= 649; prefix++) {
+    (function(prefix) {
+      it('has a prefix of ' + prefix + ' and a length of 16', function () {
+        expect(detectNetwork(prefix + '12394058691205')).to.equal("Discover")
+      });
+      it('has a prefix of ' + prefix + ' and a length of 19', function () {
+        expect(detectNetwork(prefix + '12394058691205124')).to.equal("Discover")
+      });
+  })(prefix)
+};
 
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card
-});
+  var assert = chai.assert;
+
+//   it('should have a length of 12 - 19' function() {
+//     assert(detectNetwork('5018123456789123456' === 'Maestro'))
+//
+//   })
+//
+//
+ });
 
 describe('should support China UnionPay')
 describe('should support Switch')
+})
