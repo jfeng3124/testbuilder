@@ -16,18 +16,15 @@ var detectNetwork = function(cardNumber) {
   var length = cardNumber.length;
 
   var prefix1 = cardNumber.slice(0, 2);
-  var prefix2 = cardNumber.slice(0,1);
+  var prefix2 = cardNumber.slice(0, 1);
 
-  if (length === 14 && (prefix === '38' || prefix1 === '39')) {
+  if (length === 14 && (prefix1 === '38' || '39')) {
     return "Diner's Club";
-  } else if (length === 15 && (prefix === '34' || prefix1 === '37')) {
+  } else if (length === 15 && (prefix1 === '34' || '37')) {
   	return "American Express";
   } else if((length === 13 || 16 || 19) && prefix2 === '4'){
     return "Visa";
   } else if(length === 16 && (prefix1 === '51' || '52' || '53' || '54' || '55')) {
     return "MasterCard";
   }
-
-
-
 };
