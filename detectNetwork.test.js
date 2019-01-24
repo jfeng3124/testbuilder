@@ -41,6 +41,7 @@ var FILL_ME_IN = 'Fill this value in';
 //     }
 //   });
 // });
+
 describe('Diner\'s Club', function() {
   // Be careful, tests can have bugs too...
 
@@ -68,13 +69,14 @@ describe('American Express', function() {
   //   // }
 
   // };
+  var expect = chai.expect;
 
   it('has a prefix of 34 and a length of 15', function() {
-    assert(detectNetwork('343456789012345') === 'American Express');
+    expect(detectNetwork('343456789012345')).to.equal('American Express');
   });
 
   it('has a prefix of 37 and a length of 15', function() {
-    assert(detectNetwork('373456789012345') === 'American Express');
+    expect(detectNetwork('373456789012345')).to.equal('American Express');
   });
 });
 
@@ -83,19 +85,19 @@ describe('Visa', function() {
   // Chai provides an assert that acts the same as our previous assert.
   // Search the documentation to figure out how to access it.
   //   http://chaijs.com/
-  var assert = chai.assert;
+  var expect = chai.expect;
 
 
   it('has a prefix of 4 and a length of 13', function() {
-    assert(detectNetwork('4123456789012') === 'Visa');
+    expect(detectNetwork('4123456789012')).to.equal('Visa');
   });
 
   it('has a prefix of 4 and a length of 16', function() {
-    assert(detectNetwork('4123456789012345') === 'Visa');
+    expect(detectNetwork('4123456789012345')).to.equal('Visa');
   });
 
   it('has a prefix of 4 and a length of 19', function() {
-    assert(detectNetwork('4123456789012345678') === 'Visa');
+    expect(detectNetwork('4123456789012345678')).to.equal('Visa');
   });
 });
 
@@ -126,14 +128,14 @@ describe('MasterCard', function() {
   // and should, but that's just for learning), so once you've gotten
   // these tests to pass using should syntax, refactor your tests to
   // use either expect or should, but not both.
-  var should = chai.should();
+  var expect = chai.expect;
 
   it('has a prefix of 54 and a length of 16', function() {
-    detectNetwork('5412345678901234').should.equal('MasterCard');
+    expect(detectNetwork('5412345678901234')).to.equal('MasterCard');
   });
 
   it('has a prefix of 55 and a length of 16', function() {
-    detectNetwork('5512345678901234').should.equal('MasterCard');
+    expect(detectNetwork('5512345678901234')).to.equal('MasterCard');
   })
 
 });
@@ -175,10 +177,11 @@ describe('Maestro', function() {
 
   for (let length = 12; length <= 19; length++) {
     var str = '';
-    for (let num = 0; num < length-4; num++) {
+
+    (function(str) {
+      for (let num = 0; num < length-4; num++) {
       str += '0';
     }
-    (function(str) {
       it('has a prefix of 5018 and a length of ' + length, function () {
         expect(detectNetwork('5018' + str)).to.equal("Maestro")
       });
