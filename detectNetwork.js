@@ -21,31 +21,30 @@ var detectNetwork = function(cardNumber) {
   var prefix4 = cardNumber.slice(0, 4);
   var prefix6 = cardNumber.slice(0, 6);
 
-  if ((prefix2 === '38' || prefix2 === '39') && length === 14 ) {
+  if (['38', '39'].includes(prefix2) && length === 14 ) {
     return "Diner's Club";
 
-  } else if ((prefix2 === '34' || prefix2 === '37') && length === 15) {
+  } else if (['34', '37'].includes(prefix2) && length === 15) {
   	return "American Express";
 
   } else if(parseInt(prefix2) >= 51 && parseInt(prefix2) <= 55 && length === 16) {
     return "MasterCard";
 
-  } else if(prefix4 === '6011' || (parseInt(prefix3) >= 644 && parseInt(prefix3) <= 649) || prefix2 === '65' && (length === 16 || length === 19)) {
+  } else if(prefix4 === '6011' || (parseInt(prefix3) >= 644 && parseInt(prefix3) <= 649) || prefix2 === '65' &&
+           (length === 16 || length === 19)) {
     return "Discover";
 
-  } else if((prefix4 === '5018' || prefix4 === '5020' || prefix4 === '5038' || prefix4 === '6304')  &&
-           (length >= 12 && length <= 19)) {
-    return "Maestro";
+  } else if(['5018', '5020', '5038', '6304'].includes(prefix4) && (length >= 12 && length <= 19)) {
+    return 'Maestro';
 
   } else if((parseInt(prefix6) >= 622126 && parseInt(prefix6) <= 622925) || (parseInt(prefix3) >= 624 && parseInt(prefix3) <= 626) ||
             (parseInt(prefix4) >= 6282 && parseInt(prefix4) <= 6288) && (length >= 16 && length <= 19)) {
     return "China UnionPay";
 
-  } else if(prefix4 === '4903' || prefix4 === '4905' || prefix4 === '4911' || prefix4 === '4936' || prefix4 === '6333' ||
-            prefix4 === '6759' || prefix6 === '564182' || prefix6 === '633110' && (length === 16 || length === 18 || length === 19)) {
-    return "Switch";
+  } else if(['4903', '4905', '4911', '4936', '6333', '6759'].includes(prefix4) || ['564182', '633110'].includes(prefix6) && [16, 18, 19].includes(length)) {
+    return 'Switch';
 
-  } else if(prefix1 === '4' && (length === 13 || length === 16 || length === 19)) {
+  } else if(prefix1 === '4' && [13, 16, 19].includes(length)) {
     return "Visa";
 
   }

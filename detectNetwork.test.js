@@ -57,9 +57,9 @@ describe('Diner\'s Club', function() {
     if (detectNetwork('39345678901235') !== 'Diner\'s Club') {
       throw new Error('Test failed');
     }
-
   });
 });
+
 
 describe('American Express', function() {
   // It can get annoying to keep typing the if/throw, so here is a
@@ -80,12 +80,12 @@ describe('American Express', function() {
   });
 });
 
+
 describe('Visa', function() {
   // Chai is an entire library of helper functions for tests!
   // Chai provides an assert that acts the same as our previous assert.
   // Search the documentation to figure out how to access it.
   //   http://chaijs.com/
-
   it('has a prefix of 4 and a length of 13', function() {
     expect(detectNetwork('4123456789012')).to.equal('Visa');
   });
@@ -99,12 +99,12 @@ describe('Visa', function() {
   });
 });
 
+
 describe('MasterCard', function() {
   // Chai lets you write more human-readable tests that throw helpful errors.
   // Expect syntax is one way to do this, but there are others.
   // If you want to know more, check out the documentation.
   //   http://chaijs.com/api/bdd/
-
   it('has a prefix of 51 and a length of 16', function() {
     expect(detectNetwork('5112345678901234')).to.equal('MasterCard');
   });
@@ -134,14 +134,24 @@ describe('MasterCard', function() {
 
 });
 
+
 describe('Discover', function() {
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
   it('has a prefix of 6011 and a length of 16', function() {
     expect(detectNetwork('6011451205869432')).to.equal("Discover");
   });
+
   it('has a prefix of 6011 and a length of 19', function() {
     expect(detectNetwork('6011459601294586719')).to.equal("Discover");
+  });
+
+  it('has a prefix of 65 and a length of 16', function() {
+    expect(detectNetwork('6511451205869432')).to.equal("Discover")
+  });
+
+  it('has a prefix of 65 and a length of 19', function() {
+    expect(detectNetwork('6511459601294586719')).to.equal("Discover");
   });
 
   for (var prefix = 644; prefix <= 649; prefix++) {
@@ -155,13 +165,6 @@ describe('Discover', function() {
       });
     })(prefix)
   };
-
-  it('has a prefix of 65 and a length of 16', function() {
-    expect(detectNetwork('6511451205869432')).to.equal("Discover")
-  });
-  it('has a prefix of 65 and a length of 19', function() {
-    expect(detectNetwork('6511459601294586719')).to.equal("Discover");
-  });
 
 
 describe('Maestro', function() {
@@ -189,7 +192,6 @@ describe('Maestro', function() {
   }
 });
 
-  // doesn't want asserts only should or expect!!!!
 
 describe('China UnionPay', function() {
 
@@ -250,6 +252,7 @@ describe('China UnionPay', function() {
     })(prefix)
   };
 })
+
 
 describe('Switch', function() {
   var prefixArr4 = ['4903', '4905', '4911', '4936', '6333', '6759'];
