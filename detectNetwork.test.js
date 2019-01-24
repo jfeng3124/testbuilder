@@ -62,12 +62,12 @@ describe('Diner\'s Club', function() {
 describe('American Express', function() {
   // It can get annoying to keep typing the if/throw, so here is a
   // helper function to throw an error if the input statement isn't true.
-  var assert = function(isTrue) {
-    // if(isTrue) {
-    //   throw new Error('Test failed');
-    // }
+  // var assert = function(isTrue) {
+  //   // if(isTrue) {
+  //   //   throw new Error('Test failed');
+  //   // }
 
-  };
+  // };
 
   it('has a prefix of 34 and a length of 15', function() {
     assert(detectNetwork('343456789012345') === 'American Express');
@@ -171,26 +171,31 @@ describe('Discover', function() {
 
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card
-  var expect = chai.expect;
-  var assert = chai.assert;
-  for (let length = 12; length <= 19; length++) {
+  var expect  = chai.expect;
 
-    (function(length) {
+  for (let length = 12; length <= 19; length++) {
+    var str = '';
+    for (let num = 0; num < length-4; num++) {
+      str += '0';
+    }
+    (function(str) {
       it('has a prefix of 5018 and a length of ' + length, function () {
-        expect(detectNetwork('501840586912')).to.equal("Maestro")
+        expect(detectNetwork('5018' + str)).to.equal("Maestro")
       });
       it('has a prefix of 5020 and a length of ' + length, function () {
-        expect(detectNetwork('50204058691205124')).to.equal("Maestro")
+        expect(detectNetwork('5020' + str)).to.equal("Maestro")
       });
       it('has a prefix of 5038 and a length of ' + length, function() {
-        expect(detectNetwork('5038451205869432123')).to.equal("Maestro");
+        expect(detectNetwork('5038' + str)).to.equal("Maestro");
       });
       it('has a prefix of 6304 and a length of ' + length, function() {
-        expect(detectNetwork('6304459601294586719')).to.equal("Maestro");
+        expect(detectNetwork('6304' + str)).to.equal("Maestro");
       });
-    })(length)
+    })(str)
   }
 });
+
+  // doesn't want asserts only should or expect!!!!
 
 describe('should support China UnionPay')
 describe('should support Switch')
