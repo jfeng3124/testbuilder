@@ -41,7 +41,8 @@ var detectNetwork = function(cardNumber) {
             (parseInt(prefix4) >= 6282 && parseInt(prefix4) <= 6288) && (length >= 16 && length <= 19)) {
     return "China UnionPay";
 
-  } else if(['4903', '4905', '4911', '4936', '6333', '6759'].includes(prefix4) || ['564182', '633110'].includes(prefix6) && [16, 18, 19].includes(length)) {
+  } else if(['4903', '4905', '4911', '4936', '6333', '6759'].includes(prefix4) || ['564182', '633110'].includes(prefix6) && 
+            [16, 18, 19].includes(length)) {
     return 'Switch';
 
   } else if(prefix1 === '4' && [13, 16, 19].includes(length)) {
