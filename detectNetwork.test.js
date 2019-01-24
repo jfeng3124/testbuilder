@@ -168,12 +168,12 @@ describe('Discover', function() {
 
 
 describe('Maestro', function() {
-  // Write full test coverage for the Maestro card
 
   for (let length = 12; length <= 19; length++) {
     var str = '';
+    
     for (let num = 0; num < length-4; num++) {
-      str += '0';
+      str += '1';
     }
     (function(str) {
       it('has a prefix of 5018 and a length of ' + length, function () {
@@ -255,6 +255,7 @@ describe('China UnionPay', function() {
 
 
 describe('Switch', function() {
+
   var prefixArr4 = ['4903', '4905', '4911', '4936', '6333', '6759'];
   var prefixArr6 = ['564182', '633110'];
 
