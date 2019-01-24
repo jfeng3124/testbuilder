@@ -47,15 +47,12 @@ describe('Diner\'s Club', function() {
   // Be careful, tests can have bugs too...
 
   it('has a prefix of 38 and a length of 14', function() {
-
-    if (detectNetwork('38345678901234') !== 'Diner\'s Club') {
-      throw new Error('Test failed');
+    expect(detectNetwork('38345678901234')).to.equal('Diner\'s Club') {
     }
   });
 
   it('has a prefix of 39 and a length of 14', function() {
-    if (detectNetwork('39345678901235') !== 'Diner\'s Club') {
-      throw new Error('Test failed');
+    expect(detectNetwork('39345678901235')).to.equal('Diner\'s Club') {
     }
   });
 });
@@ -171,7 +168,7 @@ describe('Maestro', function() {
 
   for (let length = 12; length <= 19; length++) {
     var str = '';
-    
+
     for (let num = 0; num < length-4; num++) {
       str += '1';
     }
